@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/coordinatorLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activity.RecordingActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="40dp"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:paddingTop="30dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            tools:context="activity.RecordingActivity">
+
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/toolbar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="?attr/actionBarSize"-->
+                <!--android:background="?attr/colorPrimary"-->
+                <!--app:layout_scrollFlags="scroll|enterAlways"-->
+                <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+
+            <ListView
+                android:id="@+id/themeList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/textView"
+                android:layout_marginRight="40dp"
+                android:layout_alignTop="@+id/questionList"
+                android:layout_above="@+id/input_layout_addTheme">
+            </ListView>
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitEnd"
+                android:text="Record"
+                android:id="@+id/record"
+                android:src="@drawable/ic_microphone_black_48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_alignBottom="@+id/questionList"
+                android:layout_centerHorizontal="true" />
+
+            <ImageButton
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitEnd"
+                android:text="Stop"
+                android:id="@+id/stop"
+                android:src="@drawable/ic_stop_black_48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_alignTop="@+id/record"
+                android:layout_centerHorizontal="true" />
+
+            <Chronometer
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chronometer"
+                android:textSize="25dp"
+                android:layout_marginTop="55dp"
+                android:layout_below="@+id/viewIntervieweeDetailsButton"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recording Page"
+                android:layout_marginTop="20dp"
+                android:textSize="40dp"
+                android:id="@+id/textView"
+                android:layout_below="@+id/themeListHeader"
+                android:layout_centerHorizontal="true" />
+
+            <ListView
+                android:id="@+id/questionList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_toEndOf="@+id/textView"
+                android:layout_above="@+id/input_layout_addQuestion"
+                android:layout_alignTop="@+id/textView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="List of themes:"
+                android:id="@+id/themeListHeader"
+                android:textSize="25dp"
+                android:textStyle="italic"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="100dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="List of questions:"
+                android:id="@+id/questionListHeader"
+                android:layout_alignTop="@+id/themeListHeader"
+                android:layout_alignStart="@+id/questionList"
+                android:textSize="25dp"
+                android:textStyle="italic"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_addQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/addAdditionalQuestionButton"
+                android:layout_alignParentEnd="true"
+                android:layout_alignStart="@+id/questionList">
+                <EditText
+                    android:id="@+id/addQuestionField"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Type additional question here..."
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/questionList" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_addTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/addAdditionalThemeButton"
+                android:layout_toStartOf="@+id/input_layout_addQuestion"
+                android:layout_alignEnd="@+id/addAdditionalThemeButton">
+                <EditText
+                    android:id="@+id/addThemeField"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Type additional theme here..."
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:layout_below="@+id/questionList"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignEnd="@+id/input_layout_addTheme" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add additional theme"
+                android:id="@+id/addAdditionalThemeButton"
+                android:layout_alignParentBottom="true"
+                android:layout_alignEnd="@+id/themeList" />
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add additional question"
+                android:id="@+id/addAdditionalQuestionButton"
+                android:layout_alignBottom="@+id/addAdditionalThemeButton"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="RECORD"
+                android:id="@+id/recordStopTextView"
+                android:layout_below="@+id/record"
+                android:layout_centerHorizontal="true" />
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View Interviewee Details"
+                android:id="@+id/viewIntervieweeDetailsButton"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>

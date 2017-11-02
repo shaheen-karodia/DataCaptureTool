@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/coordinatorLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="activity.InputActivity"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add themes and questions:"
+            android:id = "@+id/textView"
+            android:textSize="30dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proceed to recording interview"
+            android:id="@+id/goToRecordingButton"
+            android:onClick="sendMessage"
+            android:layout_marginBottom="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_themeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_below="@+id/addQuestionButton"
+            android:layout_alignParentEnd="true">
+            <EditText
+                android:id="@+id/themeTextbox"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type theme here..."
+                android:inputType="text"
+                android:imeActionLabel="AddTheme"
+                android:imeOptions="actionSend"
+                android:layout_below="@+id/input_layout_additional"
+                android:layout_alignStart="@+id/input_layout_additional" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_questionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true">
+            <EditText
+                android:id="@+id/questionTextbox"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Type question here..."
+                android:inputType="text"
+                android:imeActionLabel="AddQuestion"
+                android:imeOptions="actionSend"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add questions and themes from previously created project"
+            android:id="@+id/previousList"
+            android:layout_above="@+id/goToRecordingButton"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Question"
+            android:onClick="addQuestion"
+            android:id="@+id/addQuestionButton"
+            android:layout_below="@+id/input_layout_questionEditText"
+            android:layout_alignEnd="@+id/input_layout_questionEditText" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add theme"
+            android:onClick="addTheme"
+            android:id="@+id/addThemeButton"
+            android:layout_below="@+id/input_layout_themeEditText"
+            android:layout_alignEnd="@+id/input_layout_themeEditText"
+            android:layout_alignStart="@+id/addQuestionButton" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 themes added"
+            android:clickable="false"
+            android:enabled="false"
+            android:id="@+id/noThemesAddedText"
+            android:onClick="addAdditionalDetail"
+            android:layout_alignBottom="@+id/addThemeButton"
+            android:layout_alignStart="@+id/noQuestionsAddedText"
+            android:layout_alignEnd="@+id/noQuestionsAddedText" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 questions added"
+            android:clickable="false"
+            android:enabled="false"
+            android:id="@+id/noQuestionsAddedText"
+            android:onClick="addAdditionalDetail"
+            android:layout_alignBottom="@+id/addQuestionButton"
+            android:layout_toStartOf="@+id/addQuestionButton" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

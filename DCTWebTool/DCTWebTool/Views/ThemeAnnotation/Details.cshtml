@@ -1,0 +1,60 @@
+﻿@model DCTWebTool.Models.ThemeAnnotation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Theme Annotation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <!--Displays the namee of the instance variable-->
+        <dt>
+            @Html.DisplayNameFor(model => model.Project.ProjectTitle)
+        </dt>
+        <!--Displays the value of the instance variable-->
+        <dd>
+            @Html.DisplayFor(model => model.Project.ProjectTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThemeTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThemeTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RelativeTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RelativeTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AbsoluteTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AbsoluteTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>
+<!--Link to other pages-->
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to Project", "Launch", "Project", new { id = Model.ProjectID }, null)
+</p>

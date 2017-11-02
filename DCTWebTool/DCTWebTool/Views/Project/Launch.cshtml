@@ -1,0 +1,231 @@
+﻿@model DCTWebTool.Models.Project
+
+
+
+<script type="text/javascript">
+
+
+    //function that will jump the audio to a particular time on the buttonClick
+    function playAtTimeStamp(time_value)
+    {
+        document.getElementById("interviewTrack").currentTime = time_value;
+    }
+    //seeks the audio 10 seconds backward
+    function jumpTenBackward()
+    {
+        var curTime = document.getElementById("interviewTrack").currentTime;
+        if(curTime<10)
+        {
+            document.getElementById("interviewTrack").currentTime = 0;
+            
+
+        }
+        else
+        {
+            document.getElementById("interviewTrack").currentTime = (curTime - 10);
+  
+        }
+    }
+
+    //seeks the audio 1o seconds forward
+    function jumpTenForward() {
+        var curTime = document.getElementById("interviewTrack").currentTime;
+        if (curTime > (document.getElementById("interviewTrack").duration -10)) {
+            document.getElementById("interviewTrack").currentTime = document.getElementById("interviewTrack").duration;
+
+        }
+        else {
+            document.getElementById("interviewTrack").currentTime = (curTime +10);
+     
+        }
+    }
+    //adjusts the play rate of the audio
+    function changePlaySpeed() {
+        document.getElementById("interviewTrack").playbackRate=document.getElementById("playSelect").value;
+        document.getElementById("currentPlayRate").innerHTML = document.getElementById("playSelect").value;;
+    }
+
+  
+
+</script>
+
+<div class="container body-content" >
+
+ 
+
+
+
+@{
+    ViewBag.Title = "Project Playback";
+}
+    <!-- Heading-->
+<h2>Project Playback- @Html.DisplayFor(model => model.ProjectTitle)</h2>
+
+    <!--Links to other pages -->
+    @Html.ActionLink("Edit Project Info", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to Project List", "Index")
+    <hr/>
+    <p>
+        <!--Load the audio track -->
+        <div>
+            <audio id="interviewTrack" src="@Model.AudioPath" controls>
+                Your browser does not support the audio element.
+            </audio>
+            
+        </div>
+        <br/>
+   
+        <!-- Intialize the play rate control-->
+        <div style="float:left"; padding-left:5em>
+            Play Rate :
+            <select id="playSelect" onchange="changePlaySpeed()">
+                <option value="0.5">0.5</option>
+                <option selected="selected" value="1.0">1.0</option>
+                <option value="1.5">1.5</option>
+                <option value="2">2.0</option>
+            </select>
+        </div>
+        <!--Intialize the jumping control-->
+        <div style="float:left; padding-left:5em">  Jump Controls:
+            <button id="TenBack" onclick="jumpTenBackward()">- 10 Secs</button> |
+            <button id="TenForward" onclick="jumpTenForward()">+ 10 Secs</button>
+         </div>
+      
+        <br/>
+        <hr/>
+
+
+ 
+
+    </p>
+
+
+    <!--This is to display all the annotations associated with one project-->
+    <p>Theme Annotations</p>
+    @Html.ActionLink("Add new theme annotation", "Create", "ThemeAnnotation",new {projID = @Model.ID, projTitle = Model.ProjectTitle} ,null)
+    <div>
+        <!--Iterate through and display all themeAnnotations associated with a recording-->
+        <table class="table">
+            <tr>
+
+                <th>
+                    ID
+                </th>
+                <th>
+                    Theme Title
+                </th>
+                <th>
+                    Relative Time
+                </th>
+                <th>
+                    Absolute Time
+                </th>
+
+                <th>
+                    Comment
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.ThemeAnnotations)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ThemeTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RelativeTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AbsoluteTime)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+
+
+                    <td>
+
+                        <!-- controls for annotations-->
+                        @Html.ActionLink("Edit", "Edit", "ThemeAnnotation", new { id = item.ID }, null) |
+                        @Html.ActionLink("Details", "Details", "ThemeAnnotation", new { id = item.ID }, null) |
+                        @Html.ActionLink("Delete", "Delete", "ThemeAnnotation", new { id = item.ID }, null) |
+
+                        <button id="@item.RelativeTime" value="@item.RelativeTime" onclick="playAtTimeStamp(this.id)">Move to Annotation</button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+        <br />
+        <br />
+        <p>Question Annotations</p>
+    @Html.ActionLink("Add new question annotation", "Create", "QuestionAnnotation", new { projID = @Model.ID, projTitle = Model.ProjectTitle }, null)
+    <div>
+        <!--Iterate through and display all question annotations associated with a recording-->
+        <table class="table">
+            <tr>
+
+                <th>
+                    ID
+                </th>
+                <th>
+                    Question Title
+                </th>
+                <th>
+                    Relative Time
+                </th>
+                <th>
+                    Absolute Time
+                </th>
+
+                <th>
+                    Comment
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.QuestionAnnotations)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuestionTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RelativeTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AbsoluteTime)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+
+
+                    <td>
+                        
+                        <!-- controls for annotations-->
+                        @Html.ActionLink("Edit", "Edit", "QuestionAnnotation", new { id = item.ID }, null) |
+                        @Html.ActionLink("Details", "Details", "QuestionAnnotation", new { id = item.ID }, null) |
+                        @Html.ActionLink("Delete", "Delete", "QuestionAnnotation", new { id = item.ID }, null) |
+
+                        <button id="@item.RelativeTime" value="@item.RelativeTime" onclick="playAtTimeStamp(this.id)">Move to Annotation</button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+    
+</div>

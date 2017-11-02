@@ -1,0 +1,34 @@
+﻿@model DCTWebTool.Models.Project
+
+
+
+@{
+    ViewBag.Title = "Upload Project";
+}
+
+<h2>Upload Files to create your project</h2>
+<br/>
+<!-- Redirect to other pages-->
+
+<div>
+    @Html.ActionLink("Back to Project Index", "Index")
+</div>
+<hr/>
+<!-- Makes an html form-->
+@using (Html.BeginForm("CreateUpload", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+   <!--Controls to get user to uplaod files -->
+    <div id="single">
+        <strong>Select interview track: </strong> <input type="file" class="single" name="files" /><br />
+        <strong>Select project.json: </strong><input type="file" class="single" name="files" /><br />
+        <strong> Select themes.json:</strong><input type="file" class="single" name="files" /><br />
+        <strong>Select questions.json: </strong><input type="file" class="single" name="files" /><br />
+    </div>
+    <button class="btn btn-default">Create Project</button>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

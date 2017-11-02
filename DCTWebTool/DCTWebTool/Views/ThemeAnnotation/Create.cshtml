@@ -1,0 +1,84 @@
+﻿@model DCTWebTool.Models.ThemeAnnotation
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<!--Starts the form-->
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Theme Annotation</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <!--Displays the name of the instance variable-->
+            @Html.LabelFor(model => model.ThemeTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <!--Displays the value of the instance variable-->
+                @Html.EditorFor(model => model.ThemeTitle, new { htmlAttributes = new { @class = "form-control" } })
+                <!--Displays error message if user types in incorrect input-->
+                @Html.ValidationMessageFor(model => model.ThemeTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RelativeTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RelativeTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RelativeTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AbsoluteTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AbsoluteTime, new { htmlAttributes = new { @class = "form-control", @Value="Auto Generated" , @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.AbsoluteTime, "", new { @class = "text-danger" })
+               
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProjectID, "Project ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProjectID, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.ProjectID , @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Project.ProjectTitle, "Project Title", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Project.ProjectTitle, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.ProjectTitle, @readonly = "readonly" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<!--Links to other pages-->
+<div>
+   @Html.ActionLink("Back to Project", "Launch", "Project", new { id = ViewBag.ProjectID }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

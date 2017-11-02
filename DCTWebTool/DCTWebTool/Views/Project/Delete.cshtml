@@ -1,0 +1,65 @@
+﻿@model DCTWebTool.Models.Project
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this project?</h3>
+<div>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <!--Set all Names of the isntance variables-->
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+        <!--Gets the value of the instance variable-->
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProjectTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AudioPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AudioPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IntervieweeDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IntervieweeDetails)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <!--Links to other pages-->
+            @Html.ActionLink("Back to Project Index", "Index")
+        </div>
+    }
+</div>

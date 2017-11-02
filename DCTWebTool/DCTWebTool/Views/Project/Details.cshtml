@@ -1,0 +1,52 @@
+﻿@model DCTWebTool.Models.Project
+
+@{
+    ViewBag.Title = "Project Information";
+}
+
+<h2>Project Information</h2>
+
+<div>
+    <hr />
+   
+    <dl class="dl-horizontal">
+        <!--Set all Names of the isntance variables-->
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectTitle)
+        </dt>
+        <!--Gets the value of the instance variable-->
+        <dd>
+            @Html.DisplayFor(model => model.ProjectTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AudioPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AudioPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IntervieweeDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IntervieweeDetails)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <!--Links to other pages-->
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to Project Index", "Index")
+</p>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DCTWebTool.Models.Project>
+
+@{
+    ViewBag.Title = "Project Index";
+}
+
+<h2>Project Index</h2>
+
+<p>
+        @Html.ActionLink("Create New Project From File Upload", "CreateUpload")
+
+    <!-- Starts an html form-->
+    @using (Html.BeginForm())
+    {
+    <p>
+        Find by project title: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+    }
+</p>
+
+ <!-- Set titles for the table collumns-->
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IntervieweeDetails)
+        </th>
+        <th></th>
+    </tr>
+    <!-- iterate through all projects-->
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.IntervieweeDetails)
+        </td>
+        <td>
+            <!--links to other pages -->
+            @Html.ActionLink("Launch", "Launch", new { id = item.ID }) |
+            @Html.ActionLink("Project Info", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/coordinatorLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="activity.IntervieweeDetails">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="activity.IntervieweeDetails"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add interviewee details:"
+            android:id = "@+id/textView"
+            android:textSize="30dp"
+            android:layout_marginTop="70dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_centerHorizontal="true" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true">
+            <EditText
+                android:id="@+id/nameField"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:inputType="text"
+                android:imeOptions="actionNext" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_below="@+id/input_layout_name"
+            android:layout_alignParentStart="true">
+            <EditText
+                android:id="@+id/surnameField"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Surname"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:layout_above="@+id/detail" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_additional"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="45dp"
+            android:layout_below="@+id/addNamesButton"
+            android:layout_toStartOf="@+id/proceedButton">
+            <EditText
+                android:id="@+id/detail"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Additional detail"
+                android:inputType="text"
+                android:imeOptions="actionNext" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="45dp"
+            android:layout_marginLeft="0dp"
+            android:layout_alignTop="@+id/input_layout_additional"
+            android:layout_alignStart="@+id/textView">
+            <EditText
+                android:id="@+id/detailValue"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:hint="Value"
+                android:inputType="text"
+                android:imeOptions="actionDone"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="Proceed to question and theme input"
+            android:id="@+id/proceedButton"
+            android:onClick="goToThemesInput"
+            android:layout_marginBottom="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add addition detail"
+            android:id="@+id/addAdditionalButton"
+            android:onClick="addAdditionalDetail"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_below="@+id/input_layout_value"
+            android:layout_alignEnd="@+id/input_layout_value" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Name and Surname"
+            android:id="@+id/addNamesButton"
+            android:onClick="addNameAndSurname"
+            android:layout_below="@+id/input_layout_surname"
+            android:layout_alignEnd="@+id/input_layout_surname" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 details added"
+            android:clickable="false"
+            android:enabled="false"
+            android:id="@+id/noDetailsAdded"
+            android:onClick="addAdditionalDetail"
+            android:layout_alignBottom="@+id/addAdditionalButton"
+            android:layout_toStartOf="@+id/addAdditionalButton" />
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
